@@ -6,9 +6,9 @@ int main(){
     float b = 0.4 + 0.3 + 0.2 + 0.1;
 
     printf("A: %f\n", a);
-    printf("B: %f\n", b);
+    printf("B: %f", b);
 
-    printf("B - A: %f", b-a);
+    printf("B");
 
 
     return 0;

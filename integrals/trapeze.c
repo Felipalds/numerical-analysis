@@ -10,24 +10,33 @@ int main(){
     while(point_amount < 1){
         printf("Impossível realizar integração.");
     }
-    int *pointsX = (int*)malloc(sizeof(int) * point_amount);
-    int *pointsY = (int*)malloc(sizeof(int) * point_amount);
+    float *pointsX = (float*)malloc(sizeof(float) * point_amount);
+    float *pointsY = (float*)malloc(sizeof(float) * point_amount);
+    float integral = 0;
 
     for(int c = 0; c < point_amount; c++){
         int aux_int;
         printf("X%d: ", c);
-        scanf("%d", &pointsX[c]);
+        scanf("%f", &pointsX[c]);
         printf("Y%d: ", c);
-        scanf("%d", &pointsY[c]);
+        scanf("%f", &pointsY[c]);
     }
 
- 
-    if(point_amount)
+    for(int c = point_amount - 1; c > 0; c--){
+        float x1 = pointsX[c];
+        float x0 = pointsX[c - 1];
+        float h = x1 - x0;
+        float y1 = pointsY[c];
+        float y0 = pointsY[c - 1];
+        float y = y1 + y0;
+        integral += (h/2)*(y);
+    }
+    
     for(int c = 0; c < point_amount; c++){
-        printf("(X: %d, Y: %d)", pointsX[c], pointsY[c]);
+        printf("(X: %f, Y: %f)", pointsX[c], pointsY[c]);
     }
-    printf("\n");
+    printf("\n Integral is: %f \n", integral);
 
-
+    return 0;
 
 }
